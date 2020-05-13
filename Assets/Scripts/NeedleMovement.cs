@@ -8,7 +8,7 @@ public class NeedleMovement : MonoBehaviour
     private GameObject _needleBody;
     private bool _canShootNeedle;
     private bool _touchedTheCircle;
-    private float speed = 70f;
+    private float speed = 50f;
     private Rigidbody2D _myBody;
 
     private void Awake()
@@ -19,15 +19,19 @@ public class NeedleMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        FireTheNeedle();
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (_canShootNeedle)
         {
             _myBody.velocity = new Vector2(0, speed);
+        }
+        else
+        {
+            _myBody.velocity = new Vector2(0, 0);
         }
     }
 
@@ -42,5 +46,20 @@ public class NeedleMovement : MonoBehaviour
         _needleBody.SetActive(true);
         _myBody.isKinematic = false;
         _canShootNeedle = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (_touchedTheCircle)
+        {
+            return;
+        }
+
+        if (other.tag == "Circle")
+        {
+            _canShootNeedle = false;
+            _touchedTheCircle = true;
+            _myBody.isKinematic = true;
+        }
     }
 }
