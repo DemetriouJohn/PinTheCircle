@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _needle: {fileID: 7686481109875866416, guid: 800a00b97682e2340bc635a57490e587, type: 3}
-  _totalNeedles: 100
+  _totalNeedles: 10
 --- !u!1 &1638473668
 GameObject:
   m_ObjectHideFlags: 0

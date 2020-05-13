@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _needle;
     private GameObject[] _needles;
-    private float _needleDistance = 1.5f;
-    private int _needleIndex;
+    private float _needleDistance = 0.5f;
+    private int _needleIndex = 0;
 
     [SerializeField]
     private int _totalNeedles;
@@ -22,16 +22,20 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-    }
 
-    private void GetButton()
-    {
         _shootButton = GameObject.FindWithTag("ShootButton").GetComponent<Button>();
     }
 
     public void ShootTheNeedle()
     {
+        if (_needleIndex == _totalNeedles)
+        {
+            _shootButton.onClick.RemoveAllListeners();
+            return;
+        }
 
+        _needles[_needleIndex].GetComponent<NeedleMovement>().FireTheNeedle();
+        _needleIndex++;
     }
 
     // Start is called before the first frame update
