@@ -60,6 +60,7 @@ public class NeedleMovement : MonoBehaviour
             _canShootNeedle = false;
             _touchedTheCircle = true;
             _myBody.isKinematic = true;
+            transform.SetParent(other.transform);
         }
     }
 }
