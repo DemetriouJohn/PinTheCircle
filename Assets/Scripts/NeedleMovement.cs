@@ -16,12 +16,6 @@ public class NeedleMovement : MonoBehaviour
         Initialize();
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        FireTheNeedle();
-    }
-
     // Update is called once per frame
     private void FixedUpdate()
     {
