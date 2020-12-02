@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NeedleMovement : MonoBehaviour
 {
@@ -16,17 +14,9 @@ public class NeedleMovement : MonoBehaviour
         Initialize();
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
-        if (_canShootNeedle)
-        {
-            _myBody.velocity = new Vector2(0, speed);
-        }
-        else
-        {
-            _myBody.velocity = new Vector2(0, 0);
-        }
+        _myBody.velocity = _canShootNeedle ? new Vector2(0, speed) : new Vector2(0, 0);
     }
 
     private void Initialize()
@@ -49,7 +39,7 @@ public class NeedleMovement : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Circle")
+        if (other.CompareTag("Circle"))
         {
             _canShootNeedle = false;
             _touchedTheCircle = true;
