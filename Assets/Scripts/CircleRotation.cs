@@ -7,11 +7,6 @@ public class CircleRotation : MonoBehaviour
     private bool _canRotate = true;
     private float _angle;
 
-    private void Awake()
-    {
-
-    }
-
     private void RotateCircle()
     {
         _angle = transform.rotation.eulerAngles.z;

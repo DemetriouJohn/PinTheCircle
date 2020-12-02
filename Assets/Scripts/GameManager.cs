@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
         _needleIndex++;
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         CreateNeedles();
